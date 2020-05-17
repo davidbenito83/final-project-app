@@ -36,6 +36,9 @@ h1,h2,h3,h4,h5,h6,p {
     grid-row: 1 / 12;
     background: darkslategrey;
     border-right: 1px solid #010202;
+    position: fixed;
+    min-height: 100%;
+    min-width: 16.6%;
 }
 .logo {
     max-height: 50px;
@@ -58,12 +61,13 @@ h1,h2,h3,h4,h5,h6,p {
     text-decoration: none;
 }
 .header-nav {
-    width: 100%;
+    width: 83.4%;
     height: 25px;
     padding: 5px 0px;
     background: #d2d2d2;
     display: block;
     border-bottom: 1px solid #b7b7b7;
+    position: fixed;
 }
 .header-nav a {
     float: right;
@@ -77,6 +81,9 @@ h1,h2,h3,h4,h5,h6,p {
     padding: 0px 10px;
     color: darkslategrey;
     font-weight: 600;
+}
+.index-container {
+    margin-top: 50px;
 }
 .main-content {
     grid-column: 3 / 13;
@@ -181,4 +188,23 @@ h1,h2,h3,h4,h5,h6,p {
 .box-product .cell-table .material-icons {
     font-size: 20px;
     vertical-align: sub;
+}
+.form-type-post {
+    max-width: 50%;
+    background: white;
+    margin: 15px;
+    padding: 20px;
+    box-shadow: 0px 0px 3px 1px #cfcfcf;
+    border-radius: 3px;
+}
+.form-type-post label {
+    font-size: 14px;
+}
+.form-type-post input, .form-type-post textarea{
+    background: #fafafa;
+    border: 1px solid #efefef;
+    padding: 5px;
+    min-width: 300px;
+    margin-top: 5px;
+    margin-bottom: 20px;
 }
