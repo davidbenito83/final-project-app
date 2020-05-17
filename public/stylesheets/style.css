@@ -82,6 +82,7 @@ h1,h2,h3,h4,h5,h6,p {
     grid-column: 3 / 13;
     grid-row: 1 / 12;
     background: #f1f1f1;
+    padding-bottom: 20px;
 }
 .app-container {
     background: #ffffff;
