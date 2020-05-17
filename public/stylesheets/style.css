@@ -103,9 +103,10 @@ h1,h2,h3,h4,h5,h6,p {
     display: block;
     margin: 15px;
     padding-left: 5px;
-    font-size: 20px;
+    font-size: 16px;
     background: #fff;
-    height: 30px;
+    height: 27px;
+    line-height: 26px;
 }
 .table-container {
     min-width: 90%;
