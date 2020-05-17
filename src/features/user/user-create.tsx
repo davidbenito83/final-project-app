@@ -18,8 +18,6 @@ export const UserCreate: React.FunctionComponent<Props> = ({ onCreate, users }) 
   const [userRole, setuserRole] = useState('')
   const [userEmail, setuserEmail] = useState('')
   const [userPassword, setuserPassword] = useState('')
-  const [userAssoc, setuserAssoc] = useState('')
-
 
   return (
     <>
