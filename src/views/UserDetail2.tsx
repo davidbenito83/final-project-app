@@ -41,6 +41,7 @@ export const  User: React.FC = () => {
           <h3>Detalles del usuario: {id}</h3>
           <p>Productos asociados</p>
           <ProductCreate onCreate={createProduct} products={products} />
+
           {/*<ul>*/}
           {/*  {listItems}*/}
           {/*</ul>*/}
