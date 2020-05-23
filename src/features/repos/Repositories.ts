@@ -61,8 +61,17 @@ export class Repositories {
         description: x.description,
         quantity: x.quantity,
         userAssoc: x.userAssoc,
-        date: x.date
+        date: x.date,
+        id: x._id
       }
     })
+  }
+
+  async deleteProducts(id: Object): Promise<RepoGetApi[]> {
+
+    const response = await axios.delete('/products/delete/'+id)
+
+    return response.status;
+
   }
 }

@@ -2,9 +2,27 @@ import React from 'react'
 import { Product } from "../product";
 import { Link } from "react-router-dom";
 import Icon from "@material-ui/core/Icon";
+import { Button } from "../../core/components/button/button";
+import { Repositories } from "../repos/Repositories";
 
 interface Props {
   product: Product
+}
+
+const repo = new Repositories();
+
+function productDelete(id: Object) {
+
+  if(id !== 'null' && typeof id != 'undefined'){
+
+    const removeProduct = repo.deleteProducts(id)
+
+  }else{
+
+    return console.log('No se ha podido borrar el usuario')
+
+  }
+
 }
 
 export const ProductCard: React.FunctionComponent<Props> = ({ product }) => (
@@ -17,18 +35,9 @@ export const ProductCard: React.FunctionComponent<Props> = ({ product }) => (
         <tr>
           <td className="cell-table"><Icon>info</Icon> {product.state ? "Activa" : "Desactivada"}</td>
           <td className="cell-table"><Icon>euro_symbol</Icon> {product.quantity}</td>
-          <td className="cell-table"><Link className="f-right mx-1" to={'/user/'+product.userAssoc}><Icon>visibility</Icon></Link> <Link className="f-right mx-1" to={'/user/'+product.userAssoc}><Icon>edit</Icon></Link></td>
+          <td className="cell-table"><Button className="f-right mx-1" onClick={() => productDelete(product.id)}><Icon>delete</Icon></Button> <Link className="f-right mx-1" to={'/user/'+product.userAssoc}><Icon>visibility</Icon></Link> <Link className="f-right mx-1" to={'/user/'+product.userAssoc}><Icon>edit</Icon></Link></td>
         </tr>
       </tbody>
     </table>
-    {/*<div id="popup1" className="overlay">*/}
-    {/*  <div className="popup">*/}
-    {/*    <h2>Here i am</h2>*/}
-    {/*    <a className="close" href="#">&times;</a>*/}
-    {/*    <div className="content">*/}
-    {/*      Thank to pop me out of that button, but now i'm done so you can close this window.*/}
-    {/*    </div>*/}
-    {/*  </div>*/}
-    {/*</div>*/}
   </div>
 );

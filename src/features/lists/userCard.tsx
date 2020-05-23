@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Icon from "@material-ui/core/Icon";
 import { Button } from "../../core/components/button/button";
 import { Repositories } from "../repos/Repositories";
-import { UserModify } from "../user/user-modify";
+// import { UserModify } from "../user/user-modify";
 
 interface Props {
   user: RepoGetApi
@@ -14,7 +14,7 @@ const repo = new Repositories();
 
 function userDelete(id: Object) {
 
-  if(id != 'null' && typeof id != 'undefined'){
+  if(id !== 'null' && typeof id != 'undefined'){
 
     const removeUser = repo.deleteUsers(id)
 
@@ -28,9 +28,10 @@ function userDelete(id: Object) {
 
 function userEdit(id: Object) {
 
-  if(id != 'null' && typeof id != 'undefined'){
+  if(id !== 'null' && typeof id != 'undefined'){
 
-    const updateUser = repo.updateUsers(id)
+    console.log(id);
+    // const updateUser = repo.updateUsers(id)
 
   }else{
 
