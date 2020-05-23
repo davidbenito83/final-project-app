@@ -31,7 +31,11 @@ export const Products: React.FC = () => {
     <RoleContext.Provider value={{ role, setRole }}>
       <>
         <h2 className="title-section">Crear nuevo producto</h2>
-        <ProductCreate onCreate={createProduct} products={products} />
+        <div className="wrapper">
+          <div>
+            <ProductCreate onCreate={createProduct} products={products} />
+          </div>
+        </div>
         <h2 className="title-section">Listado de productos</h2>
         <ProductsList products={products}></ProductsList>
       </>

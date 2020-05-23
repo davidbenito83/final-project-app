@@ -27,9 +27,26 @@ export class Repositories {
         state: x.state,
         role: x.role,
         name: x.name,
-        email: x.email
+        email: x.email,
+        id: x._id
       }
     })
+  }
+
+  async deleteUsers(id: Object): Promise<RepoGetApi[]> {
+
+    const response = await axios.delete('/users/delete/'+id)
+
+    return response.status;
+
+  }
+
+  async updateUsers(id: Object): Promise<RepoGetApi[]> {
+
+    const response = await axios.delete('/users/update/'+id)
+
+    return response.status;
+
   }
 
   async findAllProducts(): Promise<Product[]> {

@@ -4,6 +4,7 @@ import { User } from "../user";
 
 interface Props {
   onCreate(
+    id: Object,
     userName: string,
     userRole: string,
     userEmail: string,
@@ -13,7 +14,7 @@ interface Props {
   users: User[]
 }
 
-export const UserCreate: React.FunctionComponent<Props> = ({ onCreate, users }) => {
+export const UserModify: React.FunctionComponent<Props> = ({ onCreate, users }) => {
   const [userName, setuserName] = useState('')
   const [userRole, setuserRole] = useState('')
   const [userEmail, setuserEmail] = useState('')
@@ -21,10 +22,11 @@ export const UserCreate: React.FunctionComponent<Props> = ({ onCreate, users }) 
 
   return (
     <>
-      <form action="/users/new" method="POST" className="form-type-post">
+      <h3>Editando usuario {userName}: </h3>
+      <form action="/users/update" method="POST" className="form-type-post">
         <label htmlFor="nombre">Nombre del usuario</label><br />
         <input type="text" name="name" className="form-control" id="nombre" placeholder="Nombre"
-               value={userName} onChange={(event) => setuserName(event.target.value)} required></input><br />
+               value={userName} disabled={true} onChange={(event) => setuserName(event.target.value)} required></input><br />
         <label htmlFor="password">Password del usuario</label><br />
         <input type="password" name="password" className="form-control" id="password" placeholder="Password"
                value={userPassword} onChange={(event) => setuserPassword(event.target.value)} required></input><br />
@@ -36,7 +38,7 @@ export const UserCreate: React.FunctionComponent<Props> = ({ onCreate, users }) 
                value={userRole} onChange={(event) => setuserRole(event.target.value)} required></input><br />
         <input type="hidden" name="state" className="form-control" id="validationDefault01"
                value="true"></input><br />
-        <Button submit>Crear Usuario</Button>
+        <Button submit>Modificar Usuario</Button>
       </form>
     </>
   )

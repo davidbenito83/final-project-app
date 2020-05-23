@@ -191,7 +191,7 @@ h1,h2,h3,h4,h5,h6,p {
     vertical-align: sub;
 }
 .form-type-post {
-    max-width: 50%;
+    max-width: 100%;
     background: white;
     margin: 15px;
     padding: 20px;
