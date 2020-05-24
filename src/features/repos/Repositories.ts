@@ -1,5 +1,6 @@
 import { RepoGetApi } from './RepoGetApi'
 import { Product } from "../product";
+import { User } from "../user";
 
 const axios = require('axios');
 
@@ -18,7 +19,7 @@ export class Repositories {
     })
   }
 
-  async findAllUsers(): Promise<RepoGetApi[]> {
+  async findAllUsers(): Promise<User[]> {
 
     const response = await axios.get('/users/getall')
 
@@ -33,7 +34,7 @@ export class Repositories {
     })
   }
 
-  async deleteUsers(id: Object): Promise<RepoGetApi[]> {
+  async deleteUsers(id: Object): Promise<User[]> {
 
     const response = await axios.delete('/users/delete/'+id)
 
@@ -41,7 +42,7 @@ export class Repositories {
 
   }
 
-  async updateUsers(id: Object): Promise<RepoGetApi[]> {
+  async updateUsers(id: Object): Promise<User[]> {
 
     const response = await axios.delete('/users/update/'+id)
 

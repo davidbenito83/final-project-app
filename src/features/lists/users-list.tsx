@@ -1,9 +1,9 @@
 import React from 'react'
-import { RepoGetApi } from "../repos/RepoGetApi";
+import { User } from "../user";
 import { UserCard } from "./userCard";
 
 export const UsersList: React.FunctionComponent<{
-  users: RepoGetApi[]
+  users: User[]
 }> = ({ users }) => {
   return (
     <div className="table-container">
