@@ -19,10 +19,11 @@ export const UserModify: React.FunctionComponent<Props> = ({ onCreate, users }) 
   const [userRole, setuserRole] = useState('')
   const [userEmail, setuserEmail] = useState('')
   const [userPassword, setuserPassword] = useState('')
+  const [userId, setuserId] = useState('')
 
   return (
     <>
-      <h3>Editando usuario {userName}: </h3>
+      <h3>Editando usuario {userName} { userId }: </h3>
       <form action="/users/update" method="POST" className="form-type-post">
         <label htmlFor="nombre">Nombre del usuario</label><br />
         <input type="text" name="name" className="form-control" id="nombre" placeholder="Nombre"
