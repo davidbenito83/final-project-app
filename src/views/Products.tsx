@@ -15,6 +15,7 @@ export const Products: React.FC = () => {
   async function createProduct(name: string, description: string, image: string, quantity:number, userAssoc:string ) {
     const newProduct: Product = { id: Math.random() * 1000, name:name, description:description, image:image, quantity:quantity, state:true, userAssoc:userAssoc}
     setProducts([...products, newProduct])
+    window.location.reload();
   }
 
   useEffect(() => {
@@ -30,14 +31,14 @@ export const Products: React.FC = () => {
   return (
     <RoleContext.Provider value={{ role, setRole }}>
       <>
+        <h2 className="title-section">Listado de productos</h2>
+        <ProductsList products={products}></ProductsList>
         <h2 className="title-section">Crear nuevo producto</h2>
         <div className="wrapper">
           <div>
             <ProductCreate onCreate={createProduct} products={products} />
           </div>
         </div>
-        <h2 className="title-section">Listado de productos</h2>
-        <ProductsList products={products}></ProductsList>
       </>
     </RoleContext.Provider>
   )

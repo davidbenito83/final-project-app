@@ -42,12 +42,11 @@ export class Repositories {
 
   }
 
-  async updateUsers(id: Object): Promise<User[]> {
+  async updateUsers(user: User): Promise<User[]> {
 
-    const response = await axios.delete('/users/update/'+id)
+    const response = await axios.post('/users/update/'+user.id,user)
 
     return response.status;
-
   }
 
   async findAllProducts(): Promise<Product[]> {
@@ -74,5 +73,12 @@ export class Repositories {
 
     return response.status;
 
+  }
+
+  async updateProducts(product: Product): Promise<Product[]>{
+
+    const response = await axios.post('/products/update/'+product.id,product)
+
+    return response.status;
   }
 }

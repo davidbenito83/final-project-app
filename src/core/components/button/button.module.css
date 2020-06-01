@@ -11,8 +11,8 @@
 }
 
 .button:hover {
+  cursor: pointer;
   filter: brightness(120%);
-  transform: translateY(-3px);
 }
 
 .primary {
