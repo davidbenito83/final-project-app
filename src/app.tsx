@@ -8,7 +8,7 @@ import { Role } from './features/permissions/role'
 import { Dashboard } from './views/Dashboard'
 import { Users } from './views/Users'
 import { Products } from "./views/Products";
-import { UserDetail } from "./views/UserDetail2";
+import { UserDetail } from "./views/UserDetail";
 import { Repair } from "./views/Repairs";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { Login } from "./views/Login";

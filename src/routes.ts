@@ -1,6 +1,6 @@
 import { Dashboard } from './views/Dashboard'
 import { Users } from './views/Users'
-import { UserDetail } from "./views/UserDetail2";
+import { UserDetail } from "./views/UserDetail";
 import { Repair } from "./views/Repairs";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { Home } from "./views/Home";

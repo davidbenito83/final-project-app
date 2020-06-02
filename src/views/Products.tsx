@@ -34,7 +34,7 @@ export const Products: React.FC = () => {
         <h2 className="title-section">Crear nuevo producto</h2>
         <div className="wrapper">
           <div>
-            <ProductCreate onCreate={createProduct} products={products} />
+            <ProductCreate onCreate={createProduct} products={products} isUser={false} userEmail={undefined} />
           </div>
         </div>
       </>
