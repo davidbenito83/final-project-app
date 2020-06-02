@@ -30,24 +30,14 @@ export const Users: React.FC = () => {
   return (
     <RoleContext.Provider value={{ role, setRole }}>
       <>
-        <h2 className="title-section">Listado de users</h2>
+        <h2 className="title-section">Listado de usuarios</h2>
         <UsersList users={users}></UsersList>
+        <h2 className="title-section">Creación de usuario</h2>
         <div className="wrapper">
           <div>
             <UserCreate onCreate={createUser} users={newUsers} />
           </div>
         </div>
-        {/*<ul>*/}
-        {/*  <li>*/}
-        {/*    <Link to="/user/1">Link a User 1 Detail</Link>*/}
-        {/*  </li>*/}
-        {/*  <li>*/}
-        {/*    <Link to="/user/2">Link a User 2 Detail</Link>*/}
-        {/*  </li>*/}
-        {/*  <li>*/}
-        {/*    <Link to="/user/3">Link a User 3 Detail</Link>*/}
-        {/*  </li>*/}
-        {/*</ul>*/}
       </>
     </RoleContext.Provider>
   )

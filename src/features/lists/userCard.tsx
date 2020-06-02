@@ -18,7 +18,7 @@ export const UserCard: React.FunctionComponent<Props> = ({ user }) => {
 
     if(id !== 'null' && typeof id != 'undefined'){
 
-      const removeUser = repo.deleteUsers(id)
+      repo.deleteUsers(id)
 
       window.location.reload();
 
@@ -31,7 +31,6 @@ export const UserCard: React.FunctionComponent<Props> = ({ user }) => {
   }
 
   function modalEdit(user: User) {
-
 
     if(typeof user.id != 'undefined'){
 
@@ -49,7 +48,7 @@ export const UserCard: React.FunctionComponent<Props> = ({ user }) => {
 
     if(typeof user.id != 'undefined'){
 
-      const updateUser = repo.updateUsers(user)
+      repo.updateUsers(user)
 
       hideModal();
 
@@ -106,13 +105,13 @@ export const UserCard: React.FunctionComponent<Props> = ({ user }) => {
           <div>
             <form className="form-type-post">
               <label htmlFor="nombre">Nombre del usuario</label><br />
-              <input type="text" name="name" className="form-control" id="nombre" placeholder="Nombre" value={userName} onChange={(event) => setuserName(event.target.value)}></input><br/>
+              <input type="text" name="name" className="form-control" id={"nombre"+user.id} placeholder="Nombre" value={userName} onChange={(event) => setuserName(event.target.value)}></input><br/>
               <label htmlFor="password">Password del usuario</label><br/>
-              <input type="password" name="password" className="form-control" id="password" placeholder="Password"value={userPassword} onChange={(event) => setuserPassword(event.target.value)}></input><br/>
+              <input type="text" name="password" className="form-control" id={"password"+user.id} placeholder="Password"value={userPassword} onChange={(event) => setuserPassword(event.target.value)}></input><br/>
               <label htmlFor="email">Email del usuario</label><br/>
-              <input type="text" name="email" className="form-control" id="email" placeholder="Email" value={userEmail} onChange={(event) => setuserEmail(event.target.value)}></input><br/>
+              <input type="text" name="email" className="form-control" id={"email"+user.id} placeholder="Email" value={userEmail} onChange={(event) => setuserEmail(event.target.value)}></input><br/>
               <label htmlFor="role">Rol de usuario</label><br/>
-              <input name="role" className="form-control" id="role" placeholder="Role" value={userRole} onChange={(event) => setuserRole(event.target.value)}></input><br/>
+              <input name="role" className="form-control" id={"role"+user.id} placeholder="Role" value={userRole} onChange={(event) => setuserRole(event.target.value)}></input><br/>
               <input type="hidden" name="id" className="form-control" value={user.id}></input>
               <input type="hidden" name="state" className="form-control" value="true"></input><br/>
               <Button onClick={ () => modifyUser(user.id,userName,userEmail,userPassword,userRole,user.state)}>Modificar Usuario</Button>

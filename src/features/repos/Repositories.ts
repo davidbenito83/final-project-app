@@ -29,6 +29,7 @@ export class Repositories {
         role: x.role,
         name: x.name,
         email: x.email,
+        password: x.password,
         id: x._id
       }
     })
@@ -80,5 +81,19 @@ export class Repositories {
     const response = await axios.post('/products/update/'+product.id,product)
 
     return response.status;
+  }
+
+  async findUserDetail(userAssoc: string|undefined): Promise<Product[]> {
+
+    const response = await axios.get('/products/getbyuser/'+userAssoc)
+
+    if (response.data !== 'undefined'){
+
+      return response.data
+    }
+    else{
+      return response.status;
+    }
+
   }
 }

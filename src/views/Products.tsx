@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Role } from "../features/permissions/role";
 import { RoleContext } from "../features/role-context";
-import { Link } from "react-router-dom";
 import { ProductsList } from "../features/lists/products-list";
 import { Product } from "../features/product";
 import { Repositories } from "../features/repos/Repositories";
-// import { Modal } from "../core/components/modal/modal";
 import { ProductCreate } from "../features/product/product-create";
 
 export const Products: React.FC = () => {

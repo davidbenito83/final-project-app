@@ -1,53 +1,71 @@
 import React, { useEffect, useState } from "react";
 import { RepoGetApi } from "../features/repos/RepoGetApi";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Role } from "../features/permissions/role";
 import { RoleContext } from "../features/role-context";
-import { TodoTaskApp } from "../features/todoTaskApp";
+import { ProductCreate } from "../features/product/product-create";
 import { Repositories } from "../features/repos/Repositories";
-import { CoinsList } from "../features/lists/coins-list";
-// import { UsersList } from "../features/lists/users-list";
+import { Product } from "../features/product";
+import { User } from "../features/user";
+import { ProductsList } from "../features/lists/products-list";
+//import { CoinsList } from "../features/lists/coins-list";
 
-export const  User: React.FC = () => {
+export const  UserDetailOld: React.FC = () => {
 
-  const [coins, setCoins] = useState<RepoGetApi[]>([])
+  let { id } = useParams()
 
-
+  const [products, setProducts] = useState<Product[]>([])
+  /*
+    async function createProduct(name: string, description: string, image: string, quantity:number, userAssoc:string ) {
+      const newProduct: Product = { id: Math.random() * 1000, name:name, description:description, image:image, quantity:quantity, state:true, userAssoc:userAssoc}
+      setProducts([...products, newProduct])
+    }
+  */
+  //const [coins, setCoins] = useState<RepoGetApi[]>([])
+  /*
   useEffect(() => {
     fetchCoins();
   }, [])
-
+*/
+  /*
   async function fetchCoins() {
     const coinsRepository = new Repositories()
     const coins = await coinsRepository.findAll()
     setCoins(coins)
   }
+*/
+  //const [userDetail, setUserDetail] = useState<User[]>([])
 
-  let { id } = useParams()
+  useEffect(() => {
+    fetchUserDetail();
+  }, [])
+
+  async function fetchUserDetail() {
+    const userRepository = new Repositories()
+    const products = await userRepository.findUserDetail(id)
+    setProducts(products)
+  }
+
   const [role, setRole] = useState<Role>('user')
-  const tasks = [1, 2, 3, 4, 5];
-
-  const listItems = tasks.map((task) =>
-    <li key={task.toString()}>
-      <Link to={`/user/${id}/repair/${task}`} key={task}>
-        {task}
-      </Link>
-    </li>
-  );
 
   return (
     <RoleContext.Provider value={{ role, setRole }}>
       <>
         <div>
           <h3>Detalles del usuario: {id}</h3>
-          <p>Reparaciones pendientes</p>
-          <ul>
-            {listItems}
-          </ul>
-          <TodoTaskApp />
+          <p>Productos asociados</p>
+          <ProductsList products={products}></ProductsList>
+          {/*<ProductCreate onCreate={createProduct} products={products} />*/}
 
+
+          {/*<ul>*/}
+          {/*  {listItems}*/}
+          {/*</ul>*/}
+
+          {/*
           <p>Listado de coins</p>
           <CoinsList coins={coins}></CoinsList>
+          */}
         </div>
       </>
     </RoleContext.Provider>

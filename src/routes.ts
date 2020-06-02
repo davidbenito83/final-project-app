@@ -1,6 +1,6 @@
 import { Dashboard } from './views/Dashboard'
 import { Users } from './views/Users'
-import { User } from "./views/UserDetail";
+import { UserDetail } from "./views/UserDetail2";
 import { Repair } from "./views/Repairs";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { Home } from "./views/Home";
@@ -43,7 +43,7 @@ export const routes = {
     path:'/user',
     name: "User Detail",
     icon: "pe-7s-graph",
-    component: User
+    component: UserDetail
   },
   dashboard: {
     path:'/dashboard',

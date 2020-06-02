@@ -11,10 +11,10 @@ export const Modal: React.FunctionComponent<Props> = ({ handleClose, show, child
   const showHideClassName = show ? "modal display-block" : "modal display-none";
 
   return (
-    <div className={showHideClassName}>
+    <td className={showHideClassName}>
       <section className="modal-main">
         {children}
       </section>
-    </div>
+    </td>
   );
 };

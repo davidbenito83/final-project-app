@@ -5,7 +5,6 @@ import Icon from "@material-ui/core/Icon";
 import { Button } from "../../core/components/button/button";
 import { Modal } from "../../core/components/modal/modal";
 import { Repositories } from "../repos/Repositories";
-import { User } from "../user";
 
 interface Props {
   product: Product
@@ -18,13 +17,13 @@ function productDelete(id: Object) {
 
   if(id !== 'null' && typeof id != 'undefined'){
 
-    const removeProduct = repo.deleteProducts(id)
+    repo.deleteProducts(id)
 
     window.location.reload();
 
   }else{
 
-    return console.log('No se ha podido borrar el usuario')
+    return console.log('No se ha podido borrar el producto')
 
   }
 
@@ -32,9 +31,7 @@ function productDelete(id: Object) {
 
 function modalEdit(product: Product) {
   if(typeof product.id != 'undefined'){
-
     showModal();
-    // modifyproduct(product.id,product.name,product.email,product.password,product.role,product.state);
   }else{
 
     return console.log('No se ha podido editar el producto')
@@ -46,7 +43,7 @@ function modalEdit(product: Product) {
 
     if(typeof product.id != 'undefined'){
 
-      const updateProduct = repo.updateProducts(product)
+      repo.updateProducts(product)
 
       hideModal();
 
@@ -99,37 +96,46 @@ return (
             <Link className="f-right mx-1" to={"/product/" + product.userAssoc}><Icon>visibility</Icon></Link> <Button
               className="f-right mx-1" onClick={() => modalEdit(product)}><Icon>edit</Icon></Button></td>
         </tr>
+        <tr>
+          <Modal show={state.show} handleClose={hideModal}>
+            <div className={modalHeader}>
+              <h3>Editando <span>{product.name}</span></h3>
+              <Button onClick={hideModal}><Icon>close</Icon></Button>
+            </div>
+            <div>
+              <form className="form-type-post">
+                <label htmlFor="nombre">Nombre del producto</label><br/>
+                <input type="text" name="name" className="form-control" id="nombre" placeholder="Nombre"
+                       value={productName}
+                       onChange={(event) => setproductName(event.target.value)}></input><br/>
+                <label htmlFor="image">Imagen del producto (url)</label><br/>
+                <input type="text" name="image" className="form-control" id="image" placeholder="Imagen del producto"
+                       value={productImage} onChange={(event) => setproductImage(event.target.value)}></input><br/>
+                <label htmlFor="quantity">Cantidad del producto</label><br/>
+                <input type="number" name="quantity" className="form-control" id="quantity" placeholder="Cantidad"
+                       value={productQuantity}
+                       onChange={(event) => setproductQuantity(event.target.value)}></input><br/>
+                <label htmlFor="userAssoc">Usuario asociado del producto</label><br/>
+                <input type="text" name="userAssoc" className="form-control" id="userAssoc" placeholder="Descripción"
+                       value={productUserAssoc}
+                       onChange={(event) => setproductUserAssoc(event.target.value)}></input><br/>
+                <label htmlFor="description">Descripción del producto</label><br/>
+                <input type="text" name="description" className="form-control" id="description"
+                       placeholder="Descripción"
+                       value={productDescription}
+                       onChange={(event) => setproductDescription(event.target.value)}></input><br/>
+                <input type="hidden" name="id" className="form-control" value={product.id}></input>
+                <input type="hidden" name="state" className="form-control" value="true"></input><br/>
+                <Button
+                  onClick={() => modifyproduct(product.id, productName, productImage, productDescription, productQuantity, product.state, productUserAssoc)}>Modificar
+                  Producto</Button>
+              </form>
+            </div>
+          </Modal>
+        </tr>
         </tbody>
       </table>
     </div>
-    <Modal show={state.show} handleClose={hideModal}>
-      <div className={modalHeader}>
-        <h3>Editando <span>{product.name}</span></h3>
-        <Button onClick={hideModal}><Icon>close</Icon></Button>
-      </div>
-      <div>
-        <form className="form-type-post">
-          <label htmlFor="nombre">Nombre del producto</label><br/>
-          <input type="text" name="name" className="form-control" id="nombre" placeholder="Nombre" value={productName}
-                 onChange={(event) => setproductName(event.target.value)}></input><br/>
-          <label htmlFor="image">Imagen del producto (url)</label><br/>
-          <input type="text" name="image" className="form-control" id="image" placeholder="Imagen del producto"
-                 value={productImage} onChange={(event) => setproductImage(event.target.value)}></input><br/>
-          <label htmlFor="quantity">Cantidad del producto</label><br/>
-          <input type="number" name="quantity" className="form-control" id="quantity" placeholder="Cantidad" value={productQuantity}
-                 onChange={(event) => setproductQuantity(event.target.value)}></input><br/>
-          <label htmlFor="userAssoc">Usuario asociado del producto</label><br/>
-          <input type="text" name="userAssoc" className="form-control" id="userAssoc" placeholder="Descripción" value={productUserAssoc}
-                 onChange={(event) => setproductUserAssoc(event.target.value)}></input><br/>
-          <label htmlFor="description">Descripción del producto</label><br/>
-          <input type="text" name="description" className="form-control" id="description" placeholder="Descripción" value={productDescription}
-                 onChange={(event) => setproductDescription(event.target.value)}></input><br/>
-          <input type="hidden" name="id" className="form-control" value={product.id}></input>
-          <input type="hidden" name="state" className="form-control" value="true"></input><br/>
-          <Button onClick={() => modifyproduct(product.id, productName, productImage, productDescription, productQuantity, product.state,productUserAssoc )}>Modificar Producto</Button>
-        </form>
-      </div>
-    </Modal>
     </>
 );
 }

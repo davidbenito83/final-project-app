@@ -21,7 +21,7 @@ export const UsersList: React.FunctionComponent<{
         </thead>
         <tbody>
         {users.map(user => (
-          <UserCard key={user.name} user={user} />
+          <UserCard key={user.id} user={user} />
         ))}
         </tbody>
       </table>

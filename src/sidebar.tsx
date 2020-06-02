@@ -5,7 +5,7 @@ import { routes } from "./routes";
 export const Sidebar: React.FC = () => {
     return (
       <div className="sidebar">
-        <Link to={routes.dashboard.path}><img src="./logo192.png" className="logo" /></Link>
+        <Link to={routes.dashboard.path}><img src="./logo192.png" className="logo" alt="logo" /></Link>
         <nav className="sidebar-nav">
           <ul>
             <Link to={routes.dashboard.path}>
