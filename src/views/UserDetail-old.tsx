@@ -55,7 +55,7 @@ export const  UserDetailOld: React.FC = () => {
           <h3>Detalles del usuario: {id}</h3>
           <p>Productos asociados</p>
           <ProductsList products={products}></ProductsList>
-          {/*<ProductCreate onCreate={createProduct} products={products} />*/}
+          {/*<RepairCreate onCreate={createProduct} products={products} />*/}
 
 
           {/*<ul>*/}

@@ -1,7 +1,7 @@
 import { Dashboard } from './views/Dashboard'
 import { Users } from './views/Users'
 import { UserDetail } from "./views/UserDetail";
-import { Repair } from "./views/Repairs";
+import { Repairs } from "./views/Repairs";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { Home } from "./views/Home";
 import { Login } from "./views/Login";
@@ -33,6 +33,12 @@ export const routes = {
     icon: "pe-7s-graph",
     component: Products
   },
+  repairs: {
+    path:'/repairs',
+    name: "Repairs",
+    icon: "pe-7s-graph",
+    component: Repairs
+  },
   users: {
     path:'/users',
     name: "Users",
@@ -50,11 +56,5 @@ export const routes = {
     name: "Dashboard",
     icon: "pe-7s-graph",
     component: Dashboard
-  },
-  repairs: {
-    path:'/repair',
-    name: "Repair",
-    icon: "pe-7s-graph",
-    component: Repair
   }
 }

@@ -9,7 +9,7 @@ import { Dashboard } from './views/Dashboard'
 import { Users } from './views/Users'
 import { Products } from "./views/Products";
 import { UserDetail } from "./views/UserDetail";
-import { Repair } from "./views/Repairs";
+import { Repairs } from "./views/Repairs";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { Login } from "./views/Login";
 import { Sidebar } from "./sidebar";
@@ -46,10 +46,13 @@ export const App: React.FC = () => {
                                 <Route path={routes.user.path + '/:id'}>
                                     <UserDetail />
                                 </Route>
+                                <Route path={routes.repairs.path}>
+                                    <Repairs />
+                                </Route>
                                 {/*
                                 <Route path={routes.users.path + '/:id'} children={<User />} />
-                                */}
-                                <Route path={routes.user.path + '/:id' + routes.repairs.path + '/:task'} children={<Repair />} />
+
+                                <Route path={routes.user.path + '/:id' + routes.repairs.path + '/:task'} children={<Repair />} />*/}
                                 <Route path={routes.protected.path}>
                                     <ProtectedRoute />
                                 </Route>

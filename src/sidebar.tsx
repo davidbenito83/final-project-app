@@ -20,6 +20,9 @@ export const Sidebar: React.FC = () => {
             <Link to={routes.products.path}>
               <li className="menu-item">Products</li>
             </Link>
+            <Link to={routes.repairs.path}>
+              <li className="menu-item">Repairs</li>
+            </Link>
             <Link to={routes.users.path}>
               <li className="menu-item">Users</li>
             </Link>

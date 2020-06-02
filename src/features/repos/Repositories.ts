@@ -1,6 +1,7 @@
 import { RepoGetApi } from './RepoGetApi'
 import { Product } from "../product";
 import { User } from "../user";
+import { Repair } from "../repair";
 
 const axios = require('axios');
 
@@ -50,6 +51,20 @@ export class Repositories {
     return response.status;
   }
 
+  async findUserDetail(userAssoc: string|undefined): Promise<Product[]> {
+
+    const response = await axios.get('/products/getbyuser/'+userAssoc)
+
+    if (response.data !== 'undefined'){
+
+      return response.data
+    }
+    else{
+      return response.status;
+    }
+
+  }
+
   async findAllProducts(): Promise<Product[]> {
 
     const response = await axios.get('/products/getall')
@@ -83,17 +98,36 @@ export class Repositories {
     return response.status;
   }
 
-  async findUserDetail(userAssoc: string|undefined): Promise<Product[]> {
+  async findAllRepairs(): Promise<Repair[]> {
 
-    const response = await axios.get('/products/getbyuser/'+userAssoc)
+    const response = await axios.get('/repairs/getall')
 
-    if (response.data !== 'undefined'){
+    return response.data.repairDB.map((x: any) => {
+      return {
+        state: x.state,
+        image: x.image,
+        name: x.name,
+        description: x.description,
+        time: x.time,
+        userAssoc: x.userAssoc,
+        date: x.date,
+        id: x._id
+      }
+    })
+  }
 
-      return response.data
-    }
-    else{
-      return response.status;
-    }
+  async deleteRepairs(id: Object): Promise<Repair[]> {
 
+    const response = await axios.delete('/repairs/delete/'+id)
+
+    return response.status;
+
+  }
+
+  async updateRepairs(repair: Repair): Promise<Repair[]>{
+
+    const response = await axios.post('/repairs/update/'+repair.id,repair)
+
+    return response.status;
   }
 }
