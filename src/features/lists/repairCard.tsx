@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Repair } from "../repair";
-import { Link } from "react-router-dom";
 import Icon from "@material-ui/core/Icon";
 import { Button } from "../../core/components/button/button";
 import { Modal } from "../../core/components/modal/modal";
@@ -11,47 +10,63 @@ interface Props {
 }
 export const RepairCard: React.FunctionComponent<Props> = ({ repair }) => {
 
-const repo = new Repositories();
+  const repo = new Repositories();
 
-function repairDelete(id: Object) {
+  function repairDelete(id: Object) {
 
-  if(id !== 'null' && typeof id != 'undefined'){
+    if (id !== "null" && typeof id != "undefined") {
 
-    repo.deleteRepairs(id)
+      repo.deleteRepairs(id);
 
-    window.location.reload();
+      window.location.reload();
 
-  }else{
+    } else {
 
-    return console.log('No se ha podido borrar la reparación')
+      return console.log("No se ha podido borrar la reparación");
 
-  }
-
-}
-
-function modalEdit(repair: Repair) {
-  if(typeof repair.id != 'undefined'){
-    showModal();
-  }else{
-
-    return console.log('No se ha podido editar la reparación')
+    }
 
   }
-}
+
+  function modalEdit(repair: Repair) {
+    if (typeof repair.id != "undefined") {
+      showModal();
+    } else {
+
+      return console.log("No se ha podido editar la reparación");
+
+    }
+  }
 
   function editRepair(repair: Repair) {
 
-    if(typeof repair.id != 'undefined'){
+    if (typeof repair.id != "undefined") {
 
-      repo.updateRepairs(repair)
+      repo.updateRepairs(repair);
 
       hideModal();
 
       window.location.reload();
 
-    }else{
+    } else {
 
-      return console.log('No se ha podido modificar la reparación')
+      return console.log("No se ha podido modificar la reparación");
+
+    }
+
+  }
+
+  function repairFinished(repair: Repair) {
+
+    if (typeof repair.id != "undefined" || typeof repair._id != "undefined") {
+
+      repo.finishRepairs(repair);
+
+      window.location.reload();
+
+    } else {
+
+      return console.log("No se ha podido terminar la reparación");
 
     }
 
@@ -90,11 +105,13 @@ return (
       <table className="box-product-controls">
         <tbody>
         <tr>
-          <td className="cell-table"><Icon>info</Icon> {repair.state ? "Activa" : "Desactivada"}</td>
-          <td className="cell-table"><Icon>euro_symbol</Icon> {repair.time}</td>
+          <td className="cell-table cell-state"><Icon className={repair.state ? "onboard-repair" : "finish-repair"}>info</Icon> {repair.state ? "En curso" : "Terminada"}</td>
+        </tr>
+        <tr>
+          <td className="cell-table"><Icon>person</Icon> {repair.userAssoc}</td>
+          <td className="cell-table"><Icon>query_builder</Icon> {repair.time}</td>
           <td className="cell-table"><Button className="f-right mx-1" onClick={() => repairDelete(repair.id)}><Icon>delete</Icon></Button>
-            <Link className="f-right mx-1" to={"/product/" + repair.userAssoc}><Icon>visibility</Icon></Link> <Button
-              className="f-right mx-1" onClick={() => modalEdit(repair)}><Icon>edit</Icon></Button></td>
+            <Button className="f-right mx-1" onClick={() => modalEdit(repair)}><Icon>edit</Icon></Button> <Button className="f-right mx-1" onClick={() => repairFinished(repair)}><Icon>pending_actions</Icon></Button> </td>
         </tr>
         <tr>
           <Modal show={state.show} handleClose={hideModal}>

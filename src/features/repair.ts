@@ -8,4 +8,5 @@ export interface Repair {
   image:string
   time:number
   userAssoc:string
+  _id?: Id
 }

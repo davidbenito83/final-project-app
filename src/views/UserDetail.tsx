@@ -2,42 +2,52 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Role } from "../features/permissions/role";
 import { RoleContext } from "../features/role-context";
-import { ProductCreate } from "../features/product/product-create";
 import { Repositories } from "../features/repos/Repositories";
-import { Product } from "../features/product";
-import { ProductsList } from "../features/lists/products-list";
+import { RepairsList} from "../features/lists/repairs-list";
+import { Repair } from "../features/repair";
+import { RepairCreate } from "../features/repair/repair-create";
 
 export const  UserDetail: React.FC = () => {
 
-  let { id } = useParams()
+  let { id } = useParams();
 
-  const [products, setProducts] = useState<Product[]>([])
+  const [repairs, setRepairs] = useState<Repair[]>([]);
 
-  async function createProduct(name: string, description: string, image: string, quantity:number, userAssoc:string ) {
-    const newProduct: Product = { id: Math.random() * 1000, name:name, description:description, image:image, quantity:quantity, state:true, userAssoc:userAssoc}
-    setProducts([...products, newProduct])
+  async function createRepair(name: string, description: string, image: string, time: number, userAssoc: string) {
+    const newProduct: Repair = {
+      id: Math.random() * 1000,
+      name: name,
+      description: description,
+      image: image,
+      time: time,
+      state: true,
+      userAssoc: userAssoc
+    };
+    setRepairs([...repairs, newProduct]);
   }
 
   useEffect(() => {
     fetchUserDetail();
-  }, [])
+  }, []);
 
   async function fetchUserDetail() {
-    const userRepository = new Repositories()
-    const products = await userRepository.findUserDetail(id)
-    setProducts(products)
+    const userRepository = new Repositories();
+    const repairs = await userRepository.findUserDetail(id);
+    setRepairs(repairs);
   }
 
-  const [role, setRole] = useState<Role>('user')
+  const [role, setRole] = useState<Role>("user");
 
   return (
     <RoleContext.Provider value={{ role, setRole }}>
       <>
-        <div>
-          <h2 className="title-section">Productos asociados al usuario: {id}</h2>
-          <ProductsList products={products}></ProductsList>
-          <h2 className="title-section">Crear tarea</h2>
-          <ProductCreate onCreate={createProduct} products={products} isUser={true} userEmail={id} />
+        <div className="view-content">
+          <h2 className="title-section">Reparaciones asociadas al usuario: {id}</h2>
+          <RepairsList repairs={repairs}></RepairsList>
+        </div>
+        <div className="right-sidebar-content">
+          <h2 className="title-section">Crear reparación</h2>
+          <RepairCreate onCreate={createRepair} repairs={repairs} isUser={true} userEmail={id}/>
         </div>
       </>
     </RoleContext.Provider>

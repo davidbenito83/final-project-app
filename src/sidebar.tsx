@@ -18,16 +18,13 @@ export const Sidebar: React.FC = () => {
               <li className="menu-item">Protected</li>
             </Link>
             <Link to={routes.products.path}>
-              <li className="menu-item">Products</li>
+              <li className="menu-item">Productos</li>
             </Link>
             <Link to={routes.repairs.path}>
-              <li className="menu-item">Repairs</li>
+              <li className="menu-item">Reparaciones</li>
             </Link>
             <Link to={routes.users.path}>
-              <li className="menu-item">Users</li>
-            </Link>
-            <Link to={routes.user.path}>
-              <li className="menu-item">User Detail</li>
+              <li className="menu-item">Usuarios</li>
             </Link>
             <Link onClick={() => localStorage.removeItem("access_token")}
                   to={routes.home.path}>

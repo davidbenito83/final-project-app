@@ -30,13 +30,13 @@ export const Users: React.FC = () => {
   return (
     <RoleContext.Provider value={{ role, setRole }}>
       <>
-        <h2 className="title-section">Listado de usuarios</h2>
-        <UsersList users={users}></UsersList>
-        <h2 className="title-section">Creación de usuario</h2>
-        <div className="wrapper">
-          <div>
-            <UserCreate onCreate={createUser} users={newUsers} />
-          </div>
+        <div className="view-content">
+          <h2 className="title-section">Listado de usuarios</h2>
+          <UsersList users={users}></UsersList>
+        </div>
+        <div className="right-sidebar-content">
+          <h2 className="title-section">Creación de usuario</h2>
+          <UserCreate onCreate={createUser} users={newUsers}/>
         </div>
       </>
     </RoleContext.Provider>

@@ -51,9 +51,9 @@ export class Repositories {
     return response.status;
   }
 
-  async findUserDetail(userAssoc: string|undefined): Promise<Product[]> {
+  async findUserDetail(userAssoc: string|undefined): Promise<Repair[]> {
 
-    const response = await axios.get('/products/getbyuser/'+userAssoc)
+    const response = await axios.get('/repairs/getbyuser/'+userAssoc)
 
     if (response.data !== 'undefined'){
 
@@ -129,5 +129,17 @@ export class Repositories {
     const response = await axios.post('/repairs/update/'+repair.id,repair)
 
     return response.status;
+  }
+
+  async finishRepairs(repair: Repair): Promise<Repair[]> {
+
+    if (repair._id) {
+      repair.id = repair._id
+    }
+
+    const response = await axios.post('/repairs/finish/'+repair.id,repair)
+
+    return response.status;
+
   }
 }
