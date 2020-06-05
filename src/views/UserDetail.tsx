@@ -13,17 +13,18 @@ export const  UserDetail: React.FC = () => {
 
   const [repairs, setRepairs] = useState<Repair[]>([]);
 
-  async function createRepair(name: string, description: string, image: string, time: number, userAssoc: string) {
-    const newProduct: Repair = {
+  async function createRepair(name: string, description: string, carRegistration:string, image: string, time: number, userAssoc: string) {
+    const newRepair: Repair = {
       id: Math.random() * 1000,
       name: name,
       description: description,
+      carRegistration: carRegistration,
       image: image,
       time: time,
       state: true,
       userAssoc: userAssoc
     };
-    setRepairs([...repairs, newProduct]);
+    setRepairs([...repairs, newRepair]);
   }
 
   useEffect(() => {

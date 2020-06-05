@@ -10,8 +10,8 @@ export const Products: React.FC = () => {
   const [role, setRole] = useState<Role>('user')
   const [products, setProducts] = useState<Product[]>([])
 
-  async function createProduct(name: string, description: string, image: string, quantity:number, userAssoc:string ) {
-    const newProduct: Product = { id: Math.random() * 1000, name:name, description:description, image:image, quantity:quantity, state:true, userAssoc:userAssoc}
+  async function createProduct(name: string, description: string, image: string, quantity:number, price:number, sellPrice:number, userAssoc:string ) {
+    const newProduct: Product = { id: Math.random() * 1000, name:name, description:description, image:image, quantity:quantity, price:price, sellPrice:sellPrice, state:true, userAssoc:userAssoc}
     setProducts([...products, newProduct])
     window.location.reload();
   }

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Product } from "../product";
-import { Link } from "react-router-dom";
 import Icon from "@material-ui/core/Icon";
 import { Button } from "../../core/components/button/button";
 import { Modal } from "../../core/components/modal/modal";
@@ -10,6 +9,8 @@ interface Props {
   product: Product
 }
 export const ProductCard: React.FunctionComponent<Props> = ({ product }) => {
+
+  console.log(product)
 
 const repo = new Repositories();
 
@@ -73,10 +74,12 @@ const modalHeader = "modal-header";
   const [productDescription, setproductDescription] = useState<string>(product.description)
   const [productImage, setproductImage] = useState<string>(product.image)
   const [productQuantity, setproductQuantity] = useState<any>(product.quantity)
+  const [productPrice, setproductPrice] = useState<any>(product.price)
+  const [productSellPrice, setproductSellPrice] = useState<any>(product.sellPrice)
   const [productUserAssoc, setproductUserAssoc] = useState<string>(product.userAssoc)
 
-  async function modifyproduct(id: Object, name: string, image: string, description: string, quantity:number, state:boolean, userAssoc: string ) {
-    const updateProduct: Product = { id: product.id, name: name,  description: description, image: image, quantity: quantity, state: state, userAssoc: userAssoc}
+  async function modifyproduct(id: Object, name: string, image: string, description: string, quantity:number, price:number, sellPrice:number, state:boolean, userAssoc: string ) {
+    const updateProduct: Product = { id: product.id, name: name,  description: description, image: image, quantity: quantity, price:price, sellPrice:sellPrice, state: state, userAssoc: userAssoc}
     setUpdateProducts([...updateProducts, updateProduct])
     editProduct(updateProduct)
   }
@@ -91,15 +94,18 @@ return (
         <tbody>
         <tr>
           <td className="cell-table"><Icon>info</Icon> {product.state ? "Activa" : "Desactivada"}</td>
-          <td className="cell-table"><Icon>euro_symbol</Icon> {product.quantity}</td>
-          <td className="cell-table"><Button className="f-right mx-1" onClick={() => productDelete(product.id)}><Icon>delete</Icon></Button>
-            <Link className="f-right mx-1" to={"/product/" + product.userAssoc}><Icon>visibility</Icon></Link> <Button
-              className="f-right mx-1" onClick={() => modalEdit(product)}><Icon>edit</Icon></Button></td>
+          <td className="cell-table f-right">Stock: {product.quantity}</td>
+        </tr>
+        <tr>
+          <td className="cell-table"><Icon>shopping_cart</Icon> {product.price}</td>
+          <td className="cell-table">{product.sellPrice} <Icon>euro_symbol</Icon></td>
+          <td className="cell-table f-right padding-b-0"><Button className="f-right mx-1" onClick={() => productDelete(product.id)}><Icon>delete</Icon></Button>
+            <Button className="f-right mx-1" onClick={() => modalEdit(product)}><Icon>edit</Icon></Button></td>
         </tr>
         <tr>
           <Modal show={state.show} handleClose={hideModal}>
             <div className={modalHeader}>
-              <h3>Editando <span>{product.name}</span></h3>
+              <h3>Editando producto</h3>
               <Button onClick={hideModal}><Icon>close</Icon></Button>
             </div>
             <div>
@@ -115,6 +121,14 @@ return (
                 <input type="number" name="quantity" className="form-control" id="quantity" placeholder="Cantidad"
                        value={productQuantity}
                        onChange={(event) => setproductQuantity(event.target.value)}></input><br/>
+                <label htmlFor="price">Precio unitario del producto</label><br/>
+                <input type="number" name="price" className="form-control" id="price" placeholder="Precio unitario"
+                       value={productPrice}
+                       onChange={(event) => setproductPrice(event.target.value)}></input><br/>
+                <label htmlFor="sellPrice">Precio de venta del producto</label><br/>
+                <input type="number" name="sellPrice" className="form-control" id="sellPrice" placeholder="Precio de venta"
+                       value={productSellPrice}
+                       onChange={(event) => setproductSellPrice(event.target.value)}></input><br/>
                 <label htmlFor="userAssoc">Usuario asociado del producto</label><br/>
                 <input type="text" name="userAssoc" className="form-control" id="userAssoc" placeholder="Descripción"
                        value={productUserAssoc}
@@ -127,7 +141,7 @@ return (
                 <input type="hidden" name="id" className="form-control" value={product.id}></input>
                 <input type="hidden" name="state" className="form-control" value="true"></input><br/>
                 <Button
-                  onClick={() => modifyproduct(product.id, productName, productImage, productDescription, productQuantity, product.state, productUserAssoc)}>Modificar
+                  onClick={() => modifyproduct(product.id, productName, productImage, productDescription, productQuantity, productPrice, productSellPrice, product.state, productUserAssoc)}>Modificar
                   Producto</Button>
               </form>
             </div>

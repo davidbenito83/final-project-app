@@ -18,53 +18,56 @@ export const App: React.FC = () => {
     const [role, setRole] = useState<Role>('user')
     return (
       <div className="wrapper">
-        <RoleContext.Provider value={{ role, setRole }}>
-            <Router>
-                <Sidebar />
-                <div className="main-content">
-                    <div className="index-header">
-                        <Header />
-                    </div>
-                    <div className="index-container">
-                        <Switch>
-                            <Route path={routes.home.path} exact>
-                                <h1>Home</h1>
-                            </Route>
-                            <Route path={routes.login.path}>
-                                <Login />
-                            </Route>
-                            <PrivateRoute>
-                                <Route path={routes.dashboard.path} exact>
-                                    <Dashboard />
-                                </Route>
-                                <Route path={routes.products.path}>
-                                    <Products />
-                                </Route>
-                                <Route path={routes.users.path}>
-                                    <Users />
-                                </Route>
-                                <Route path={routes.user.path + '/:id'}>
-                                    <UserDetail />
-                                </Route>
-                                <Route path={routes.repairs.path}>
-                                    <Repairs />
-                                </Route>
-                                {/*
-                                <Route path={routes.users.path + '/:id'} children={<User />} />
+          <RoleContext.Provider value={{ role, setRole }}>
+              <Router>
+                  <Switch>
+                      <Route path={routes.login.path}>
+                          <div className="login-page">
+                              <div className="main-content">
+                                  <div className="form-login">
+                                      <Login/>
+                                  </div>
+                              </div>
+                          </div>
+                      </Route>
+                      <PrivateRoute>
+                          <Sidebar/>
+                          <div className="main-content">
+                              <div className="index-header">
+                                  <Header/>
+                              </div>
+                              <div className="index-container">
+                                  <Route path={routes.dashboard.path} exact>
+                                      <Dashboard/>
+                                  </Route>
+                                  <Route path={routes.products.path}>
+                                      <Products/>
+                                  </Route>
+                                  <Route path={routes.users.path}>
+                                      <Users/>
+                                  </Route>
+                                  <Route path={routes.user.path + "/:id"}>
+                                      <UserDetail/>
+                                  </Route>
+                                  <Route path={routes.repairs.path}>
+                                      <Repairs/>
+                                  </Route>
+                                  {/*
+                                        <Route path={routes.users.path + '/:id'} children={<User />} />
 
-                                <Route path={routes.user.path + '/:id' + routes.repairs.path + '/:task'} children={<Repair />} />*/}
-                                <Route path={routes.protected.path}>
-                                    <ProtectedRoute />
-                                </Route>
-                            </PrivateRoute>
-                            <Route path={routes.home.path} exact>
-                                <h1>Logout</h1>
-                            </Route>
-                        </Switch>
-                    </div>
-                </div>
-            </Router>
-        </RoleContext.Provider>
+                                        <Route path={routes.user.path + '/:id' + routes.repairs.path + '/:task'} children={<Repair />} />*/}
+                                  <Route path={routes.protected.path}>
+                                      <ProtectedRoute/>
+                                  </Route>
+                              </div>
+                          </div>
+                      </PrivateRoute>
+                      <Route path={routes.login.path} exact>
+                          <h1>Logout</h1>
+                      </Route>
+                  </Switch>
+              </Router>
+          </RoleContext.Provider>
       </div>
     )
 }

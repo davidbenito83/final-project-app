@@ -92,9 +92,7 @@ export const UserCard: React.FunctionComponent<Props> = ({ user }) => {
         <td className="cell-table">{user.email}</td>
         <td className="cell-table">{user.role}</td>
         <td className="cell-table">{user.state ? "SI" : "NO"}</td>
-        <td className="cell-table"><Link to={"/user/" + user.email}><Icon>visibility</Icon></Link></td>
-        <td className="cell-table"><Button onClick={() => modalEdit(user)}><Icon>edit</Icon></Button></td>
-        <td className="cell-table"><Button onClick={() => userDelete(user.id)}><Icon>delete</Icon></Button></td>
+        <td className="cell-table f-right"><Link to={"/user/" + user.email}><Icon>visibility</Icon></Link> <Button onClick={() => modalEdit(user)}><Icon>edit</Icon></Button> <Button onClick={() => userDelete(user.id)}><Icon>delete</Icon></Button></td>
       </tr>
       <tr>
         <Modal show={state.show} handleClose={hideModal}>

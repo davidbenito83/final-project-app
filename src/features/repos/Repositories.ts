@@ -77,6 +77,9 @@ export class Repositories {
         description: x.description,
         quantity: x.quantity,
         userAssoc: x.userAssoc,
+        productsAssoc: x.productsAssoc,
+        price: x.price,
+        sellPrice: x.sellPrice,
         date: x.date,
         id: x._id
       }
@@ -108,6 +111,7 @@ export class Repositories {
         image: x.image,
         name: x.name,
         description: x.description,
+        carRegistration: x.carRegistration,
         time: x.time,
         userAssoc: x.userAssoc,
         date: x.date,

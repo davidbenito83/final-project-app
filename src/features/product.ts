@@ -7,5 +7,7 @@ export interface Product {
   description:string
   image:string
   quantity:number
+  price:number
+  sellPrice:number
   userAssoc:string
 }

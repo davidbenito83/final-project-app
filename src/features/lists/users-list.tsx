@@ -15,8 +15,7 @@ export const UsersList: React.FunctionComponent<{
           <th>Rol</th>
           <th>Activo</th>
           <th></th>
-          <th></th>
-          <th></th>
+
         </tr>
         </thead>
         <tbody>

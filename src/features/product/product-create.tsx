@@ -8,6 +8,8 @@ interface Props {
     productDescription: string,
     productImage: string,
     quantity: number,
+    price: number,
+    sellPrice: number,
     userAssoc: string,
     state: boolean
   ): void
@@ -21,6 +23,8 @@ export const ProductCreate: React.FunctionComponent<Props> = ({ onCreate, produc
   const [productDescription, setproductDescription] = useState('')
   const [productImage, setproductImage] = useState('')
   const [quantity, setquantity] = useState('')
+  const [productPrice, setproductPrice] = useState('')
+  const [productSellPrice, setproductSellPrice] = useState('')
   const [userAssoc, setuserAssoc] = useState('')
 
   return (
@@ -32,6 +36,14 @@ export const ProductCreate: React.FunctionComponent<Props> = ({ onCreate, produc
         <label htmlFor="cantidad">Cantidad que desea pujar</label><br />
         <input type="number" name="quantity" className="form-control" id="cantidad" placeholder="Cantidad"
                value={quantity} onChange={(event) => setquantity(event.target.value)} required></input><br />
+        <label htmlFor="price">Precio unitario del producto</label><br/>
+        <input type="number" name="price" className="form-control" id="price" placeholder="Precio unitario"
+               value={productPrice}
+               onChange={(event) => setproductPrice(event.target.value)}></input><br/>
+        <label htmlFor="sellPrice">Precio de venta del producto</label><br/>
+        <input type="number" name="sellPrice" className="form-control" id="sellPrice" placeholder="Precio de venta"
+               value={productSellPrice}
+               onChange={(event) => setproductSellPrice(event.target.value)}></input><br/>
         <label htmlFor="urlimagen">Imagen del producto</label><br />
         <input type="text" name="image" className="form-control" id="urlimagen" placeholder="URL de la imagen"
                value={productImage} onChange={(event) => setproductImage(event.target.value)} required></input><br />

@@ -6,6 +6,7 @@ export interface Repair {
   name:string
   description:string
   image:string
+  carRegistration:string
   time:number
   userAssoc:string
   _id?: Id
