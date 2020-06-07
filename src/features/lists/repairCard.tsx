@@ -87,12 +87,13 @@ const modalHeader = "modal-header";
   const [repairName, setrepairName] = useState<string>(repair.name)
   const [repairDescription, setrepairDescription] = useState<string>(repair.description)
   const [repairImage, setrepairImage] = useState<string>(repair.image)
+  const [repairContactNumber, setrepairContactNumber] = useState<any>('')
   const [repairTime, setrepairTime] = useState<any>(repair.time)
   const [repairUserAssoc, setrepairUserAssoc] = useState<string>(repair.userAssoc)
   const [repairCarRegistration, setCarRegistration] = useState(repair.carRegistration)
 
-  async function modifyrepair(id: Object, name: string, carRegistration:string, image: string, description: string, time:number, state:boolean, userAssoc: string ) {
-    const updateRepair: Repair = { id: repair.id, name: name,  description: description, carRegistration: carRegistration, image: image, time: time, state: state, userAssoc: userAssoc}
+  async function modifyrepair(id: Object, name: string, carRegistration:string, contactNumber:number, image: string, description: string, time:number, state:boolean, userAssoc: string ) {
+    const updateRepair: Repair = { id: repair.id, name: name,  description: description, carRegistration: carRegistration, contactNumber:contactNumber, image: image, time: time, state: state, userAssoc: userAssoc}
     setUpdateRepairs([...updateRepairs, updateRepair])
     editRepair(updateRepair)
   }
@@ -107,7 +108,8 @@ return (
         <tbody>
         <tr>
           <td className="cell-table cell-state"><Icon className={repair.state ? "onboard-repair" : "finish-repair"}>info</Icon> {repair.state ? "En curso" : "Terminada"}</td>
-          <td className="cell-table f-right"><Icon>directions_car</Icon> {repair.carRegistration}</td>
+          <td className="cell-table"><Icon>directions_car</Icon> {repair.carRegistration}</td>
+          <td className="cell-table f-right"><Icon>phone</Icon> {repair.contactNumber}</td>
         </tr>
         <tr>
           <td className="cell-table"><Icon>person</Icon> {repair.userAssoc}</td>
@@ -130,6 +132,9 @@ return (
                 <label htmlFor="carRegistration">Matrícula del vehículo</label><br />
                 <input type="text" name="carRegistration" className="form-control" id="carRegistration" placeholder="Matrícula"
                        value={repairCarRegistration} onChange={(event) => setCarRegistration(event.target.value)} required></input><br />
+                <label htmlFor="contactNumber">Número de contacto del vehículo</label><br />
+                <input type="number" name="contactNumber" className="form-control" id="contactNumber" placeholder="Número de contacto"
+                       value={repairContactNumber} onChange={(event) => setrepairContactNumber(event.target.value)} required></input><br />
                 <label htmlFor="quantity">Tiempo de ejecución de la reparación</label><br/>
                 <input type="number" name="quantity" className="form-control" id="quantity" placeholder="Tiempo de ejecución"
                        value={repairTime}
@@ -143,7 +148,7 @@ return (
                 <input type="hidden" name="id" className="form-control" value={repair.id}></input>
                 <input type="hidden" name="state" className="form-control" value="true"></input><br/>
                 <Button
-                  onClick={() => modifyrepair(repair.id, repairName, repairCarRegistration, repairImage, repairDescription, repairTime, repair.state, repairUserAssoc)}>Modificar
+                  onClick={() => modifyrepair(repair.id, repairName, repairCarRegistration, repairContactNumber, repairImage, repairDescription, repairTime, repair.state, repairUserAssoc)}>Modificar
                   Reparación</Button>
               </form>
             </div>

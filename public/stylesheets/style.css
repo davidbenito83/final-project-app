@@ -43,11 +43,12 @@ h1,h2,h3,h4,h5,h6,p {
     grid-row: 1 / 12;
     -webkit-filter: none;
     filter: none;
-    background: linear-gradient(0.25turn, #8dbaba, darkslategrey);
+    background: linear-gradient(0.25turn, #8dbaba, #8dbaba, darkslategrey);
 }
 .login-page .main-content h3 {
     text-align: center;
-    color: #444444;
+    color: #fff;
+    text-shadow: 1px 1px 1px #111111;
 }
 .form-login {
     display: block;

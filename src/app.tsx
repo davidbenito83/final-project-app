@@ -13,6 +13,13 @@ import { Repairs } from "./views/Repairs";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { Login } from "./views/Login";
 import { Sidebar } from "./sidebar";
+// import { Error404 } from "./views/404";
+
+const NoMatchPage = () => {
+    return (
+      <h3>404 - Not found</h3>
+    );
+};
 
 export const App: React.FC = () => {
     const [role, setRole] = useState<Role>('user')
@@ -62,10 +69,12 @@ export const App: React.FC = () => {
                               </div>
                           </div>
                       </PrivateRoute>
-                      <Route path={routes.login.path} exact>
+                      <Route path={routes.logout.path}>
                           <h1>Logout</h1>
                       </Route>
+                      <Route component={NoMatchPage} />
                   </Switch>
+
               </Router>
           </RoleContext.Provider>
       </div>

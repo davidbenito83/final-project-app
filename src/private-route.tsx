@@ -12,12 +12,7 @@ export const PrivateRoute: React.FC = ({ children, ...rest }) => {
         authManager.isAuthenticated() ? (
           children
         ) : (
-          <Redirect
-            to={{
-              pathname: '/login',
-              state: { from: location }
-            }}
-          />
+          <p></p>
         )
       }
     />

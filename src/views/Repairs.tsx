@@ -10,8 +10,8 @@ export const Repairs: React.FC = () => {
   const [role, setRole] = useState<Role>('user')
   const [repairs, setRepairs] = useState<Repair[]>([])
 
-  async function createRepair(name: string, description: string, image: string, carRegistration:string, time:number, userAssoc:string ) {
-    const newRepair: Repair = { id: Math.random() * 1000, name:name, description:description, carRegistration:carRegistration, image:image, time: time, state:true, userAssoc:userAssoc}
+  async function createRepair(name: string, description: string, image: string, carRegistration:string, contactNumber:number, time:number, userAssoc:string ) {
+    const newRepair: Repair = { id: Math.random() * 1000, name:name, description:description, carRegistration:carRegistration, contactNumber:contactNumber, image:image, time: time, state:true, userAssoc:userAssoc}
     setRepairs([...repairs, newRepair])
     window.location.reload();
   }

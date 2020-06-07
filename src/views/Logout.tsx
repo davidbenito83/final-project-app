@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { routes } from "../routes";
 import { Button } from "../core/components/button/button";
 
-export const Login: React.FC = () => {
+export const Logout: React.FC = () => {
   const history = useHistory()
 
   return (

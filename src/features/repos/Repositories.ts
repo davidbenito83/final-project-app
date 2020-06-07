@@ -112,6 +112,7 @@ export class Repositories {
         name: x.name,
         description: x.description,
         carRegistration: x.carRegistration,
+        contactNumber: x.contactNumber,
         time: x.time,
         userAssoc: x.userAssoc,
         date: x.date,

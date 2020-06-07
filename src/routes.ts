@@ -5,7 +5,9 @@ import { Repairs } from "./views/Repairs";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { Home } from "./views/Home";
 import { Login } from "./views/Login";
+import { Logout } from "./views/Logout";
 import { Products } from "./views/Products";
+import { Error404 } from "./views/404";
 
 export const routes = {
 
@@ -14,6 +16,12 @@ export const routes = {
     name: "Login",
     icon: "pe-7s-graph",
     component: Login
+  },
+  logout: {
+    path:'/logout',
+    name: "Logout",
+    icon: "pe-7s-graph",
+    component: Logout
   },
   protected: {
     path:'/protected',
@@ -56,5 +64,11 @@ export const routes = {
     name: "Dashboard",
     icon: "pe-7s-graph",
     component: Dashboard
+  },
+  error404: {
+    path:'/error404',
+    name: "Error 404",
+    icon: "pe-7s-graph",
+    component: Error404
   }
 }
