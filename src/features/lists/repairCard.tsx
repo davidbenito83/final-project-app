@@ -4,11 +4,13 @@ import Icon from "@material-ui/core/Icon";
 import { Button } from "../../core/components/button/button";
 import { Modal } from "../../core/components/modal/modal";
 import { Repositories } from "../repos/Repositories";
+import { Product } from "../product";
 
 interface Props {
   repair: Repair
+  products: Product[]
 }
-export const RepairCard: React.FunctionComponent<Props> = ({ repair }) => {
+export const RepairCard: React.FunctionComponent<Props> = ({ repair , products}) => {
 
   const repo = new Repositories();
 
@@ -72,6 +74,51 @@ export const RepairCard: React.FunctionComponent<Props> = ({ repair }) => {
 
   }
 
+  function productsExtract(productsAssoc: object, products:object) {
+
+    if ((products != null && typeof products != "undefined") && (productsAssoc != null && typeof productsAssoc != "undefined")) {
+      let productID = ''
+      let productName = ''
+      if(typeof productsAssoc == "string"){
+        return(
+          Object.values(products).map(x => {
+            productID = x.id
+            productName = x.name
+            if (productsAssoc == productID){
+              return(<span className="related-products">{productName}</span>);
+            }
+          })
+        )
+      }
+      else {
+        return (
+          <ul className="productsAssoc-list">
+            {
+              Object.values(repair.productsAssoc).map((item, i) => (
+                <li key={i}>
+                  {
+                    Object.values(products).map(x => {
+                      productID = x.id
+                      productName = x.name
+                      if (item == productID){
+                        return(<span className="related-products">{productName}</span>);
+                      }
+                    })
+                  }
+                </li>
+              ))
+            }
+          </ul>
+        )
+      }
+    } else {
+
+      return console.log("No se ha podido cargar los productos");
+
+    }
+
+  }
+
 const [state, setState] = useState({ show: false });
 
 const showModal = () => {
@@ -90,10 +137,11 @@ const modalHeader = "modal-header";
   const [repairContactNumber, setrepairContactNumber] = useState<any>('')
   const [repairTime, setrepairTime] = useState<any>(repair.time)
   const [repairUserAssoc, setrepairUserAssoc] = useState<string>(repair.userAssoc)
+  const [repairProductsAssoc, setrepairProductsAssoc] = useState<object>(repair.productsAssoc)
   const [repairCarRegistration, setCarRegistration] = useState(repair.carRegistration)
 
-  async function modifyrepair(id: Object, name: string, carRegistration:string, contactNumber:number, image: string, description: string, time:number, state:boolean, userAssoc: string ) {
-    const updateRepair: Repair = { id: repair.id, name: name,  description: description, carRegistration: carRegistration, contactNumber:contactNumber, image: image, time: time, state: state, userAssoc: userAssoc}
+  async function modifyrepair(id: Object, name: string, carRegistration:string, contactNumber:number, image: string, description: string, time:number, state:boolean, userAssoc: string, productsAssoc:object ) {
+    const updateRepair: Repair = { id: repair.id, name: name,  description: description, carRegistration: carRegistration, contactNumber:contactNumber, image: image, time: time, state: state, userAssoc: userAssoc, productsAssoc:productsAssoc}
     setUpdateRepairs([...updateRepairs, updateRepair])
     editRepair(updateRepair)
   }
@@ -104,6 +152,8 @@ return (
       <img src={repair.image} className="img-box-product" alt={repair.name}/>
       <h4>{repair.name}</h4>
       <p>{repair.description}</p>
+      <h5>Productos relacionados</h5>
+      {productsExtract(repair.productsAssoc, products)}
       <table className="box-product-controls">
         <tbody>
         <tr>
@@ -148,7 +198,7 @@ return (
                 <input type="hidden" name="id" className="form-control" value={repair.id}></input>
                 <input type="hidden" name="state" className="form-control" value="true"></input><br/>
                 <Button
-                  onClick={() => modifyrepair(repair.id, repairName, repairCarRegistration, repairContactNumber, repairImage, repairDescription, repairTime, repair.state, repairUserAssoc)}>Modificar
+                  onClick={() => modifyrepair(repair.id, repairName, repairCarRegistration, repairContactNumber, repairImage, repairDescription, repairTime, repair.state, repairUserAssoc, repairProductsAssoc)}>Modificar
                   Reparación</Button>
               </form>
             </div>

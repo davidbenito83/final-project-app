@@ -115,6 +115,7 @@ export class Repositories {
         contactNumber: x.contactNumber,
         time: x.time,
         userAssoc: x.userAssoc,
+        productsAssoc: x.productsAssoc,
         date: x.date,
         id: x._id
       }

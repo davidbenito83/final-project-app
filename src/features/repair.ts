@@ -10,5 +10,6 @@ export interface Repair {
   contactNumber:number
   time:number
   userAssoc:string
+  productsAssoc: object
   _id?: Id
 }

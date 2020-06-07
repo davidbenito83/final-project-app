@@ -4,6 +4,8 @@ import { Repair } from '../repair'
 import { User } from "../user";
 import { Repositories } from "../repos/Repositories";
 import { UserCard } from "../lists/userCard";
+import { Product } from "../product";
+import { ProductsCheckbox } from "../lists/products-checkbox";
 
 interface Props {
   onCreate(
@@ -14,6 +16,7 @@ interface Props {
     contactNumber:number,
     repairTime: number,
     userAssoc: string,
+    productsAssoc: object,
     state: boolean
   ): void
   repairs: Repair[]
@@ -29,17 +32,25 @@ export const RepairCreate: React.FunctionComponent<Props> = ({ onCreate, repairs
   const [repairImage, setrepairImage] = useState('')
   const [repairTime, setrepairTime] = useState('')
   const [userAssoc, setuserAssoc] = useState('')
+  const [repairProductsAssoc, setrepairProductsAssoc] = useState('')
 
   const [users, setUsers] = useState<User[]>([])
+  const [products, setProducts] = useState<Product[]>([])
 
   useEffect(() => {
     fetchUsers();
+    fetchProducts();
   }, [])
 
   async function fetchUsers() {
     const usersRepository = new Repositories()
     const users = await usersRepository.findAllUsers()
     setUsers(users)
+  }
+  async function fetchProducts() {
+    const productsRepository = new Repositories()
+    const products = await productsRepository.findAllProducts()
+    setProducts(products)
   }
 
   return (
@@ -66,6 +77,7 @@ export const RepairCreate: React.FunctionComponent<Props> = ({ onCreate, repairs
           <option key="chapa-pintura" className="form-control" value="./images/chapa-pintura.png">Chapa y pintura</option>
         </select>
         <label htmlFor="urlimagen">Productos asociados</label><br />
+        <ProductsCheckbox products={products} />
         {/*
 
         TODO: SELECT con todos los productos

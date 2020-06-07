@@ -5,6 +5,7 @@ import { RoleContext } from "../features/role-context";
 import { Repositories } from "../features/repos/Repositories";
 import { RepairsList} from "../features/lists/repairs-list";
 import { Repair } from "../features/repair";
+import { Product } from "../features/product";
 import { RepairCreate } from "../features/repair/repair-create";
 
 export const  UserDetail: React.FC = () => {
@@ -12,8 +13,9 @@ export const  UserDetail: React.FC = () => {
   let { id } = useParams();
 
   const [repairs, setRepairs] = useState<Repair[]>([]);
+  const [products, setProducts] = useState<Product[]>([])
 
-  async function createRepair(name: string, description: string, image: string, carRegistration:string, contactNumber:number, time: number, userAssoc: string) {
+  async function createRepair(name: string, description: string, image: string, carRegistration:string, contactNumber:number, time: number, userAssoc: string, productsAssoc:object) {
     const newRepair: Repair = {
       id: Math.random() * 1000,
       name: name,
@@ -23,6 +25,7 @@ export const  UserDetail: React.FC = () => {
       contactNumber: contactNumber,
       time: time,
       userAssoc: userAssoc,
+      productsAssoc: productsAssoc,
       state: true
     };
     setRepairs([...repairs, newRepair]);
@@ -30,12 +33,18 @@ export const  UserDetail: React.FC = () => {
 
   useEffect(() => {
     fetchUserDetail();
+    fetchProducts();
   }, []);
 
   async function fetchUserDetail() {
     const userRepository = new Repositories();
     const repairs = await userRepository.findUserDetail(id);
     setRepairs(repairs);
+  }
+  async function fetchProducts() {
+    const productsRepository = new Repositories()
+    const products = await productsRepository.findAllProducts()
+    setProducts(products)
   }
 
   const [role, setRole] = useState<Role>("user");
@@ -45,7 +54,7 @@ export const  UserDetail: React.FC = () => {
       <>
         <div className="view-content">
           <h2 className="title-section">Reparaciones asociadas al usuario: {id}</h2>
-          <RepairsList repairs={repairs}></RepairsList>
+          <RepairsList repairs={repairs} products={products}></RepairsList>
         </div>
         <div className="right-sidebar-content">
           <h2 className="title-section">Crear reparación</h2>
