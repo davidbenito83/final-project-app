@@ -78,18 +78,6 @@ export const RepairCreate: React.FunctionComponent<Props> = ({ onCreate, repairs
         </select>
         <label htmlFor="urlimagen">Productos asociados</label><br />
         <ProductsCheckbox products={products} />
-        {/*
-
-        TODO: SELECT con todos los productos
-
-
-        <select name="image" className="display-block form-control" id="image" placeholder="Tipo" required onChange={(event) => setrepairImage(event.target.value)}>*/}
-        {/*  <option key="aceite" className="form-control" value="./images/cambio-aceite.png">Cambio Aceite</option>*/}
-        {/*  <option key="ruedas" className="form-control" value="./images/cambio-ruedas.png">Cambio Ruedas</option>*/}
-        {/*  <option key="amortiguadores" className="form-control" value="./images/amortiguadores.png">Cambio Amortiguadores</option>*/}
-        {/*  <option key="mecanica-general" className="form-control" value="./images/mecanica-general.png">Mecánica en General</option>*/}
-        {/*  <option key="chapa-pintura" className="form-control" value="./images/chapa-pintura.png">Chapa y pintura</option>*/}
-        {/*</select>*/}
         <label htmlFor="descripcion">Descripción</label><br />
         <textarea name="description" className="form-control" id="descripcion" placeholder="Descripción"
                value={repairDescription} onChange={(event) => setrepairDescription(event.target.value)} required></textarea><br />
