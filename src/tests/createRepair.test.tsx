@@ -1,95 +1,129 @@
 import React from 'react'
 import { fireEvent, render } from '@testing-library/react'
-import { Users } from "../views/Users";
+import { Repairs } from "../views/Repairs";
+
+//TODO: FALTAN DOS TESTS
 
 describe('app', () => {
-  it('should have a button with text to create a user', () => {
+  it('should have a button with text to create a repair', () => {
     const { getByText } = setup()
 
-    const newTodo = getByText('Crear Usuario')
+    const newTodo = getByText('Crear Reparación')
     expect(newTodo).toBeInTheDocument()
   })
-  it('should create a user with name', () => {
-    const { createUser, getName } = setup()
+  it('should create a repair with name', () => {
+    const { createRepair, getName } = setup()
 
-    createUser('David','d@d.com', '1234', 'ADMIN_USER', true)
+    createRepair('Nueva Reparación','Description reparación', 'https://homepages.cae.wisc.edu/~ece533/images/airplane.png', '4055FGH', 666666666, 10, 'd@d.com', { products: [{ name: "producto 1"}, { name:"producto 2" }] })
 
-    expect(getName()).toHaveValue('David')
+    expect(getName()).toHaveValue('Nueva Reparación')
   })
-  it('should create a user with email', () => {
-    const { createUser, getEmail } = setup()
+  it('should create a repair with description', () => {
+    const { createRepair, getDescription } = setup()
 
-    createUser('David','d@d.com', '1234', 'ADMIN_USER', true)
+    createRepair('Nueva Reparación','Description reparación', 'https://homepages.cae.wisc.edu/~ece533/images/airplane.png', '4055FGH', 666666666, 10, 'd@d.com', { products: [{ name: "producto 1"}, { name:"producto 2" }] })
 
-    expect(getEmail()).toHaveValue('d@d.com')
+    expect(getDescription()).toHaveValue('Description reparación')
   })
-  it('should create a user with password', () => {
-    const { createUser, getPassword } = setup()
+  it('should create a repair with image and type', () => {
+    const { createRepair, getImage } = setup()
 
-    createUser('David','d@d.com', '1234', 'ADMIN_USER', true)
+    createRepair('Nueva Reparación','Description reparación', './images/cambio-aceite.png', '4055FGH', 666666666, 10, 'd@d.com', { products: [{ name: "producto 1"}, { name:"producto 2" }] })
 
-    expect(getPassword()).toHaveValue('1234')
+    expect(getImage()).toHaveValue('./images/cambio-aceite.png')
   })
-  it('should create a user with role', () => {
-    const { createUser, getRole} = setup()
+  it('should create a repair with car registration', () => {
+    const { createRepair, getCarRegistration } = setup()
 
-    createUser('David','d@d.com', '1234', 'ADMIN_USER', true)
+    createRepair('Nueva Reparación','Description reparación', 'https://homepages.cae.wisc.edu/~ece533/images/airplane.png', '4055FGH', 666666666, 10, 'd@d.com', { products: [{ name: "producto 1"}, { name:"producto 2" }] })
 
-    expect(getRole()).toHaveValue('ADMIN_USER')
+    expect(getCarRegistration()).toHaveValue('4055FGH')
   })
-  it('should create a user with state', () => {
-    const { createUser, getState } = setup()
+  it('should create a repair with contact number', () => {
+    const { createRepair, getContactNumber } = setup()
 
-    createUser('David','d@d.com', '1234', 'ADMIN_USER', true)
+    createRepair('Nueva Reparación','Description reparación', 'https://homepages.cae.wisc.edu/~ece533/images/airplane.png', '4055FGH', 666666666, 10, 'd@d.com', { products: [{ name: "producto 1"}, { name:"producto 2" }] })
 
-    expect(getState()).toHaveValue('true')
+    expect(getContactNumber()).toHaveValue('666666666')
+  })
+  it('should create a repair with execution time', () => {
+    const { createRepair, getTime } = setup()
+
+    createRepair('Nueva Reparación','Description reparación', 'https://homepages.cae.wisc.edu/~ece533/images/airplane.png', '4055FGH', 666666666, 10, 'd@d.com', { products: [{ name: "producto 1"}, { name:"producto 2" }] })
+
+    expect(getTime()).toHaveValue(10)
+  })
+  it('should create a repair with an associated products', () => {
+    const { createRepair, getProductsAssoc } = setup()
+
+    createRepair('Nueva Reparación','Description reparación', 'https://homepages.cae.wisc.edu/~ece533/images/airplane.png', '4055FGH', 666666666, 10, 'd@d.com', { products: [{ name: "producto 1"}, { name:"producto 2" }] })
+
+    expect(getProductsAssoc()).toHaveValue([])
   })
 })
 
 function setup() {
 
-  const rendered = render(<Users />)
+  const rendered = render(<Repairs />)
 
-  function createUser(name: string, email: string, password: string, role:string, state:boolean) {
+  function createRepair(name: string, description: string, image: string, carRegistration:string, contactNumber:number, time:number, userAssoc:string, productsAssoc:object) {
     const inputName = getName()
-    const inputPassword = getPassword()
-    const inputEmail = getEmail()
-    const inputRole = getRole()
-    const inputState = getState()
+    const inputDescription = getDescription()
+    const inputImage = getImage()
+    const inputCarRegistration = getCarRegistration()
+    const inputContactNumber = getContactNumber()
+    const inputTime = getTime()
+    const inputUserAssoc = getUserAssoc()
+    const inputProductsAssoc = getProductsAssoc()
 
     const form = rendered.getByRole('form')
 
     fireEvent.change(inputName, { target: { value: name } })
-    fireEvent.change(inputPassword, { target: { value: password } })
-    fireEvent.change(inputEmail, { target: { value: email } })
-    fireEvent.change(inputRole, { target: { value: role } })
-    fireEvent.change(inputState, { target: { value: state } })
+    fireEvent.change(inputDescription, { target: { value: description } })
+    fireEvent.change(inputImage, { target: { value: image } })
+    fireEvent.change(inputCarRegistration, { target: { value: carRegistration } })
+    fireEvent.change(inputContactNumber, { target: { value: contactNumber } })
+    fireEvent.change(inputTime, { target: { value: time } })
+    fireEvent.change(inputUserAssoc, { target: { value: userAssoc } })
+    fireEvent.change(inputProductsAssoc, { target: { value: productsAssoc } })
     fireEvent.submit(form)
   }
 
   function getName() {
     return rendered.getByPlaceholderText('Nombre')
   }
-  function getPassword() {
-    return rendered.getByPlaceholderText('Password')
+  function getDescription() {
+    return rendered.getByPlaceholderText('Descripción')
   }
-  function getEmail() {
-    return rendered.getByPlaceholderText('Email')
+  function getImage() {
+    return rendered.getByPlaceholderText('Tipo')
   }
-  function getRole() {
-    return rendered.getByPlaceholderText('Role')
+  function getCarRegistration() {
+    return rendered.getByPlaceholderText('Matrícula')
   }
-  function getState() {
-    return rendered.getByDisplayValue('true')
+  function getContactNumber() {
+    return rendered.getByPlaceholderText('Número de contacto')
+  }
+  function getTime() {
+    return rendered.getByPlaceholderText('Tiempo de ejecución')
+  }
+  function getUserAssoc() {
+    return rendered.getByPlaceholderText('Usuario asignado')
+  }
+  function getProductsAssoc() {
+    return rendered.getByLabelText('Productos asociados')
   }
 
   return {
     ...rendered,
-    createUser,
+    createRepair,
     getName,
-    getPassword,
-    getEmail,
-    getRole,
-    getState
+    getDescription,
+    getImage,
+    getCarRegistration,
+    getContactNumber,
+    getTime,
+    getUserAssoc,
+    getProductsAssoc
   }
 }

@@ -5,7 +5,7 @@ export const ProductsCheckbox: React.FunctionComponent<{
   products: Product[]
 }> = ({ products }) => {
   return (
-    <select id="chkproducts" name="productsAssoc" multiple={true}>
+    <select id="chkproducts" name="productsAssoc" multiple={true} aria-label="chkproducts">
       {products.map(product => (
         <option key={product.name} value={product.id}>{product.name}</option>
       ))}
