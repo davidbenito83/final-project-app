@@ -21,7 +21,7 @@ export const UserCreate: React.FunctionComponent<Props> = ({ onCreate, users }) 
 
   return (
     <>
-      <form action="/users/new" method="POST" className="form-type-post">
+      <form action="/users/new" method="POST" className="form-type-post" role="form">
         <label htmlFor="nombre">Nombre del usuario</label><br />
         <input type="text" name="name" className="form-control" id="nombre" placeholder="Nombre"
                value={userName} onChange={(event) => setuserName(event.target.value)} required></input><br />

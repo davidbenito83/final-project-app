@@ -12,26 +12,6 @@ describe('app', () => {
     expect(newTodo).toBeInTheDocument()
   })
 
-  it('should clear the todo input when creating todo', () => {
-    const { createTodo, getInput } = setup()
-
-    createTodo('New todo')
-
-    expect(getInput()).toHaveValue('')
-  })
-
-  it('should complete a todo', () => {
-    const { createTodo, getInput, getByText } = setup()
-    createTodo('Old todo')
-    createTodo('New todo')
-
-    const newTodo = getByText('New todo')
-    const oldTodo = getByText('Old todo')
-    fireEvent.click(newTodo)
-
-    expect(newTodo).toHaveClass('completed')
-    expect(oldTodo).not.toHaveClass('completed')
-  })
 })
 
 function setup() {
