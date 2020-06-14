@@ -68,18 +68,18 @@ export const RepairCreate: React.FunctionComponent<Props> = ({ onCreate, repairs
         <input type="text" name="contactNumber" className="form-control" id="contactNumber" placeholder="Número de contacto"
                value={repairContactNumber} onChange={(event) => setrepairContactNumber(event.target.value)} required></input><br />
         <label htmlFor="image">Tipo de Reparación</label><br />
-        <select name="image" className="display-block form-control" id="image" aria-label="image" placeholder="Tipo" required onChange={(event) => setrepairImage(event.target.value)}>
-          <option key="aceite" className="form-control" value="./images/cambio-aceite.png">Cambio Aceite</option>
-          <option key="ruedas" className="form-control" value="./images/cambio-ruedas.png">Cambio Ruedas</option>
-          <option key="amortiguadores" className="form-control" value="./images/amortiguadores.png">Cambio Amortiguadores</option>
-          <option key="mecanica-general" className="form-control" value="./images/mecanica-general.png">Mecánica en General</option>
-          <option key="chapa-pintura" className="form-control" value="./images/chapa-pintura.png">Chapa y pintura</option>
+        <select name="image" className="display-block form-control" id="image" aria-label="image" placeholder="Tipo" onChange={(event) => setrepairImage(event.target.value)}>
+          <option key="aceite" className="form-control" value="/images/cambio-aceite.png">Cambio Aceite</option>
+          <option key="ruedas" className="form-control" value="/images/cambio-ruedas.png">Cambio Ruedas</option>
+          <option key="amortiguadores" className="form-control" value="/images/amortiguadores.png">Cambio Amortiguadores</option>
+          <option key="mecanica-general" className="form-control" value="/images/mecanica-general.png">Mecánica en General</option>
+          <option key="chapa-pintura" className="form-control" value="/images/chapa-pintura.png">Chapa y pintura</option>
         </select>
         <label htmlFor="chkproducts">Productos asociados</label><br />
         <ProductsCheckbox aria-labelledby="chkproducts" products={products} />
         <label htmlFor="descripcion">Descripción</label><br />
         <textarea name="description" className="form-control" id="descripcion" placeholder="Descripción"
-               value={repairDescription} onChange={(event) => setrepairDescription(event.target.value)} required></textarea><br />
+               value={repairDescription} onChange={(event) => setrepairDescription(event.target.value)}></textarea><br />
         <label htmlFor="userAssoc" className={isUser ? "display-none" : "display-block"}>Usuario asignado para la reparación</label>
 
         {isUser ? <input type="hidden" name="userAssoc" value={userEmail} aria-labelledby="userAssoc" placeholder="Usuario asignado" id="userAssoc"></input> :

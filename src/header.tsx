@@ -10,7 +10,7 @@ export const Header: React.FC = () => {
         <div className="row-nav-icons">
           <Clock />
           <Link onClick={() => localStorage.removeItem("access_token")}
-                to={routes.home.path}><Icon>exit_to_app</Icon></Link>
+                to={routes.login.path}><Icon>exit_to_app</Icon></Link>
           <Link to={routes.user.path}><Icon>person</Icon></Link>
           <Link to={routes.protected.path}><Icon>security</Icon></Link>
           <Link to={routes.dashboard.path}><Icon>home</Icon></Link>

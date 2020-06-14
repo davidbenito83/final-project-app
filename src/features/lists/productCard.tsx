@@ -10,8 +10,6 @@ interface Props {
 }
 export const ProductCard: React.FunctionComponent<Props> = ({ product }) => {
 
-  console.log(product)
-
 const repo = new Repositories();
 
 function productDelete(id: Object) {
@@ -126,13 +124,10 @@ return (
                        value={productPrice}
                        onChange={(event) => setproductPrice(event.target.value)}></input><br/>
                 <label htmlFor="sellPrice">Precio de venta del producto</label><br/>
-                <input type="number" name="sellPrice" className="form-control" id="sellPrice" placeholder="Precio de venta"
+                <input type="number" name="sellPrice" className="form-control" id="sellPrice"
+                       placeholder="Precio de venta"
                        value={productSellPrice}
                        onChange={(event) => setproductSellPrice(event.target.value)}></input><br/>
-                <label htmlFor="userAssoc">Usuario asociado del producto</label><br/>
-                <input type="text" name="userAssoc" className="form-control" id="userAssoc" placeholder="Descripción"
-                       value={productUserAssoc}
-                       onChange={(event) => setproductUserAssoc(event.target.value)}></input><br/>
                 <label htmlFor="description">Descripción del producto</label><br/>
                 <input type="text" name="description" className="form-control" id="description"
                        placeholder="Descripción"

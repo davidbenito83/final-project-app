@@ -93,6 +93,12 @@ h1,h2,h3,h4,h5,h6,p {
     vertical-align: bottom;
     margin-right: 5px;
 }
+.item-logout{
+    position: absolute;
+    bottom: 0px;
+    width: 87%;
+    margin: 10px 5px;
+}
 .header-nav {
     width: 83.4%;
     height: 25px;
@@ -257,6 +263,7 @@ h1,h2,h3,h4,h5,h6,p {
     font-size: 12px;
     margin-left: 10px;
     word-break: break-word;
+    display: block;
 }
 .box-product .box-product-controls {
     width: 100%;

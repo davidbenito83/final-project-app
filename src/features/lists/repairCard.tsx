@@ -112,9 +112,9 @@ export const RepairCard: React.FunctionComponent<Props> = ({ repair , products})
         )
       }
     } else {
-
-      return console.log("No se ha podido cargar los productos");
-
+      return(
+        <span className="related-products">NO EXISTEN PRODUCTOS ASOCIADOS</span>
+      );
     }
 
   }

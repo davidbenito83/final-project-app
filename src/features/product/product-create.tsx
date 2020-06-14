@@ -33,7 +33,7 @@ export const ProductCreate: React.FunctionComponent<Props> = ({ onCreate, produc
         <label htmlFor="nombre">Nombre del producto</label><br />
         <input type="text" name="name" className="form-control" id="nombre" placeholder="Nombre"
                value={productName} onChange={(event) => setproductName(event.target.value)} required></input><br />
-        <label htmlFor="cantidad">Cantidad que desea pujar</label><br />
+        <label htmlFor="cantidad">Cantidad de producto en stock</label><br />
         <input type="number" name="quantity" className="form-control" id="cantidad" placeholder="Cantidad"
                value={quantity} onChange={(event) => setquantity(event.target.value)} required></input><br />
         <label htmlFor="price">Precio unitario del producto</label><br/>
@@ -49,10 +49,7 @@ export const ProductCreate: React.FunctionComponent<Props> = ({ onCreate, produc
                value={productImage} onChange={(event) => setproductImage(event.target.value)} required></input><br />
         <label htmlFor="descripcion">Descripción del producto</label><br />
         <textarea name="description" className="form-control" id="descripcion" placeholder="Descripción"
-               value={productDescription} onChange={(event) => setproductDescription(event.target.value)} required></textarea><br />
-        <label htmlFor="user" className={isUser ? "display-none" : "display-block"}>Usuario del producto</label><br className={isUser ? "display-none" : "display-block"} />
-        <input type={isUser ? "hidden" : "text"} name="userAssoc" className="form-control" id="user" placeholder="Usuario del producto"
-               value={isUser ? userEmail : userAssoc} onChange={(event) => setuserAssoc(event.target.value)} required></input><br className={isUser ? "display-none" : "display-block"} />
+               value={productDescription} onChange={(event) => setproductDescription(event.target.value)}></textarea><br />
         <input type="hidden" name="state" className="form-control" id="validationDefault01"
                value="true"></input><br className={isUser ? "display-none" : "display-block"} />
         <Button  submit>Crear Producto</Button>
