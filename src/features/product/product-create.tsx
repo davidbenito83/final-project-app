@@ -25,7 +25,6 @@ export const ProductCreate: React.FunctionComponent<Props> = ({ onCreate, produc
   const [quantity, setquantity] = useState('')
   const [productPrice, setproductPrice] = useState('')
   const [productSellPrice, setproductSellPrice] = useState('')
-  const [userAssoc, setuserAssoc] = useState('')
 
   return (
     <>
