@@ -40,7 +40,7 @@ export class Repositories {
 
     const response = await axios.delete('/users/delete/'+id)
 
-    return response.status;
+    return response.data;
 
   }
 
@@ -48,7 +48,7 @@ export class Repositories {
 
     const response = await axios.post('/users/update/'+user.id,user)
 
-    return response.status;
+    return response.data;
   }
 
   async findUserDetail(userAssoc: string|undefined): Promise<Repair[]> {
@@ -90,7 +90,7 @@ export class Repositories {
 
     const response = await axios.delete('/products/delete/'+id)
 
-    return response.status;
+    return response.data;
 
   }
 
@@ -98,7 +98,7 @@ export class Repositories {
 
     const response = await axios.post('/products/update/'+product.id,product)
 
-    return response.status;
+    return response.data;
   }
 
   async findAllRepairs(): Promise<Repair[]> {
@@ -126,7 +126,7 @@ export class Repositories {
 
     const response = await axios.delete('/repairs/delete/'+id)
 
-    return response.status;
+    return response.data;
 
   }
 
@@ -134,7 +134,7 @@ export class Repositories {
 
     const response = await axios.post('/repairs/update/'+repair.id,repair)
 
-    return response.status;
+    return response.data;
   }
 
   async finishRepairs(repair: Repair): Promise<Repair[]> {
@@ -145,7 +145,7 @@ export class Repositories {
 
     const response = await axios.post('/repairs/finish/'+repair.id,repair)
 
-    return response.status;
+    return response.data;
 
   }
 }

@@ -66,9 +66,13 @@ h1,h2,h3,h4,h5,h6,p {
     min-width: 16.6%;
 }
 .logo {
-    max-height: 50px;
+    padding: 20px 0px;
+    max-height: 90px;
     display: block;
     margin: 0 auto;
+}
+.sidebar-nav {
+    border-top: 2px solid #b7b7b7;
 }
 .sidebar-nav ul{
     list-style-type: none;
@@ -84,6 +88,10 @@ h1,h2,h3,h4,h5,h6,p {
 .sidebar a {
     color:white;
     text-decoration: none;
+}
+.menu-item .MuiIcon-root {
+    vertical-align: bottom;
+    margin-right: 5px;
 }
 .header-nav {
     width: 83.4%;

@@ -1,34 +1,29 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { routes } from "./routes";
+import Icon from '@material-ui/core/Icon';
 
 export const Sidebar: React.FC = () => {
     return (
       <div className="sidebar">
-        <Link to={routes.dashboard.path}><img src="./logo192.png" className="logo" alt="logo" /></Link>
+        <Link to={routes.dashboard.path}><img src="./logo-app-garage.png" className="logo" alt="logo" /></Link>
         <nav className="sidebar-nav">
           <ul>
             <Link to={routes.dashboard.path}>
-              <li className="menu-item">Dashboard</li>
-            </Link>
-            <Link to={routes.login.path}>
-              <li className="menu-item">Login</li>
-            </Link>
-            <Link to={routes.protected.path}>
-              <li className="menu-item">Protected</li>
+              <li className="menu-item"><Icon>home</Icon> Dashboard</li>
             </Link>
             <Link to={routes.products.path}>
-              <li className="menu-item">Productos</li>
+              <li className="menu-item"><Icon>shopping_basket</Icon> Productos</li>
             </Link>
             <Link to={routes.repairs.path}>
-              <li className="menu-item">Reparaciones</li>
+              <li className="menu-item"><Icon>build</Icon> Reparaciones</li>
             </Link>
             <Link to={routes.users.path}>
-              <li className="menu-item">Usuarios</li>
+              <li className="menu-item"><Icon>person</Icon> Usuarios</li>
             </Link>
             <Link onClick={() => localStorage.removeItem("access_token")}
                   to={routes.home.path}>
-              <li className="menu-item">Logout</li>
+              <li className="menu-item"><Icon>exit_to_app</Icon> Logout</li>
             </Link>
           </ul>
         </nav>
