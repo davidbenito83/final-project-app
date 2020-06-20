@@ -1,5 +1,4 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
 import { Button } from "../core/components/button/button";
 
 export const Login: React.FC = () => {
@@ -14,8 +13,6 @@ export const Login: React.FC = () => {
   function validacion() {
     localStorage.setItem('access_token', result)
   }
-
-  const history = useHistory()
 
   return (
     <>
