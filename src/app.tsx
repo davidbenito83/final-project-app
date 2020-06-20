@@ -13,7 +13,6 @@ import { Repairs } from "./views/Repairs";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { Login } from "./views/Login";
 import { Sidebar } from "./sidebar";
-// import { Error404 } from "./views/404";
 
 const NoMatchPage = () => {
     return (
@@ -40,9 +39,6 @@ export const App: React.FC = () => {
                       <PrivateRoute>
                           <Sidebar/>
                           <div className="main-content">
-                              <div className="index-header">
-                                  <Header/>
-                              </div>
                               <div className="index-container">
                                   <Route path={routes.dashboard.path} exact>
                                       <Dashboard/>

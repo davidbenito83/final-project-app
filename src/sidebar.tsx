@@ -6,12 +6,9 @@ import Icon from '@material-ui/core/Icon';
 export const Sidebar: React.FC = () => {
     return (
       <div className="sidebar">
-        <Link to={routes.dashboard.path}><img src="./logo-app-garage.png" className="logo" alt="logo" /></Link>
+        <Link to={routes.products.path}><img src="./logo-app-garage.png" className="logo" alt="logo" /></Link>
         <nav className="sidebar-nav">
           <ul>
-            <Link to={routes.dashboard.path}>
-              <li className="menu-item"><Icon>home</Icon> Dashboard</li>
-            </Link>
             <Link to={routes.products.path}>
               <li className="menu-item"><Icon>shopping_basket</Icon> Productos en stock</li>
             </Link>
