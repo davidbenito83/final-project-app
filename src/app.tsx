@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-import { Header } from './header'
 import { routes } from './routes'
 import { PrivateRoute } from './private-route'
 import { RoleContext } from './features/role-context'
@@ -27,6 +26,15 @@ export const App: React.FC = () => {
           <RoleContext.Provider value={{ role, setRole }}>
               <Router>
                   <Switch>
+                      <Route path={routes.home.path}>
+                          <div className="login-page">
+                              <div className="main-content">
+                                  <div className="form-login">
+                                      <Login/>
+                                  </div>
+                              </div>
+                          </div>
+                      </Route>
                       <Route path={routes.login.path}>
                           <div className="login-page">
                               <div className="main-content">
@@ -54,13 +62,6 @@ export const App: React.FC = () => {
                                   </Route>
                                   <Route path={routes.repairs.path}>
                                       <Repairs/>
-                                  </Route>
-                                  {/*
-                                        <Route path={routes.users.path + '/:id'} children={<User />} />
-
-                                        <Route path={routes.user.path + '/:id' + routes.repairs.path + '/:task'} children={<Repair />} />*/}
-                                  <Route path={routes.protected.path}>
-                                      <ProtectedRoute/>
                                   </Route>
                               </div>
                           </div>

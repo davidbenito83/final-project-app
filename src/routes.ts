@@ -11,6 +11,13 @@ import { Error404 } from "./views/404";
 
 export const routes = {
 
+  home: {
+    path:'/',
+    name: "Login",
+    icon: "pe-7s-graph",
+    component: Login
+  },
+
   login: {
     path:'/login',
     name: "Login",
@@ -22,18 +29,6 @@ export const routes = {
     name: "Logout",
     icon: "pe-7s-graph",
     component: Logout
-  },
-  protected: {
-    path:'/protected',
-    name: "Protected",
-    icon: "pe-7s-graph",
-    component: Home
-  },
-  home: {
-    path:'/home',
-    name: "Home",
-    icon: "pe-7s-graph",
-    component: ProtectedRoute
   },
   products: {
     path:'/products',
